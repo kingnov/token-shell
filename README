@@ -1,0 +1,27 @@
+Tokenizer and example token-shell (not really a shell)
+
+This tarball contains the following useful tidbits:
+    * a sample Makefile
+    * sample C files and header files for writing your own modular code
+    * a string tokenizer
+
+To compile the code, run "make".  To clean up, run "make clean".
+
+
+The tokenizer parses an input strings into tokens.  After
+initialization, the get_next_token() function returns the next token
+in the string.  Tokens are delimited by spaces, >, <, &, and |.  ("&" is 
+ used for job control feature, and we won't use it here.)  Note
+that the tokenizer does not provide support for escaped characters
+(e.g., \|) or the use of quotation marks (") to specify strings with
+whitespaces or special characters.
+
+To use the tokenizer, you *must* initialize it using init_tokenizer().
+You can then get successive tokens by using the aptly named
+get_next_token() function.  Note that get_next_token() allocates space
+for the token, so you should free tokens that are no longer used.
+free_tokenizer() is used to reclaim space used by the tokenizer.  The
+functions are well documented in the header (.h) file.  In fact, you
+may want to use this documentation format in your own code (if you do,
+you can use doxygen, see http://www.stack.nl/~dimitri/doxygen/, to
+produce fancy HTML and LaTeX documentation).
